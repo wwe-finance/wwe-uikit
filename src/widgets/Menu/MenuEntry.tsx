@@ -18,10 +18,9 @@ const rainbowAnimation = keyframes`
 `;
 
 const LinkLabel = styled.div<{ isPushed: boolean }>`
-  color: ${({ isPushed, theme }) => (isPushed ? theme.colors.textSubtle : "transparent")};
   transition: color 0.4s;
   flex-grow: 1;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.nav.textColor};
 `;
 
 const MenuEntry = styled.div<Props>`
@@ -31,25 +30,25 @@ const MenuEntry = styled.div<Props>`
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
   font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
-  background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
-  color: ${({ theme }) => theme.colors.textSubtle};
-  box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
+  background-color: ${({ secondary, theme }) => (secondary ? theme.nav.childMenuBackground : "transparent")};
+  color: ${({ theme }) => theme.nav.textColor};
+  box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.nav.iconColor}` : "none")};
 
   a {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.nav.textColor};
   }
 
   svg {
-    fill: ${({ theme }) => theme.colors.primary};
+    fill: ${({ theme }) => theme.nav.iconColor};
     margin-right: 14px;
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: ${({ theme }) => theme.nav.menuOverColor};
   }
 
   // Safari fix

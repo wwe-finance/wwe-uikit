@@ -28,8 +28,8 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   padding-right: 16px;
   width: 100%;
   height: ${MENU_HEIGHT}px;
-  background-color: ${({ theme }) => theme.nav.background};
-  border-bottom: solid 2px rgba(133, 133, 133, 0.1);
+  background-color: ${({ theme }) => theme.nav.headerBackground};
+  border-bottom: solid 1px rgb(222 212 212 / 72%);
   z-index: 20;
   transform: translate3d(0, 0, 0);
 `;
@@ -68,8 +68,10 @@ const Menu: React.FC<NavProps> = ({
   setLang,
   currentLang,
   cakePriceUsd,
+  friendPriceUsd,
   links,
   priceLink,
+  friendPriceLink,
   rugDocLink,
   jagoSaferLink,
   profile,
@@ -138,9 +140,11 @@ const Menu: React.FC<NavProps> = ({
           setLang={setLang}
           currentLang={currentLang}
           cakePriceUsd={cakePriceUsd}
+          friendPriceUsd={friendPriceUsd}
           pushNav={setIsPushed}
           links={links}
           priceLink={priceLink}
+          friendPriceLink={friendPriceLink}
           rugDocLink={rugDocLink}
           jagoSaferLink={jagoSaferLink}
         />

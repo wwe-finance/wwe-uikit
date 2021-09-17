@@ -15,7 +15,12 @@ export interface PushedProps {
     pushNav: (isPushed: boolean) => void;
 }
 export interface NavTheme {
-    background: string;
+    headerBackground: string;
+    sidebarBackground: string;
+    childMenuBackground: string;
+    menuOverColor: string;
+    iconColor: string;
+    textColor: string;
     hover: string;
 }
 export interface MenuSubEntry {
@@ -35,11 +40,13 @@ export interface PanelProps {
     isDark: boolean;
     toggleTheme: (isDark: boolean) => void;
     cakePriceUsd?: number;
+    friendPriceUsd?: number;
     currentLang: string;
     langs: LangType[];
     setLang: (lang: LangType) => void;
     links: Array<MenuEntry>;
     priceLink: string;
+    friendPriceLink: string;
 }
 export interface NavProps extends PanelProps {
     rugDocLink?: string;

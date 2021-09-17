@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import { PancakeRoundIcon, CogIcon, SvgProps } from "../../components/Svg";
+import styled, { useTheme } from "styled-components";
+import { FriendTokenIcon, PancakeRoundIcon, CogIcon, SvgProps } from "../../components/Svg";
 import Text from "../../components/Text/Text";
 import Flex from "../../components/Flex/Flex";
 import Dropdown from "../../components/Dropdown/Dropdown";
@@ -21,7 +21,7 @@ const { MoonIcon, SunIcon, LanguageIcon } = Icons;
 const Container = styled.div`
   flex: none;
   padding: 8px 4px;
-  background-color: ${({ theme }) => theme.nav.background};
+  background-color: ${({ theme }) => theme.nav.sidebarBackground};
   border-top: solid 2px rgba(133, 133, 133, 0.1);
 `;
 
@@ -60,9 +60,11 @@ const PanelFooter: React.FC<Props> = ({
   toggleTheme,
   isDark,
   cakePriceUsd,
+  friendPriceUsd,
   currentLang,
   langs,
   setLang,
+  friendPriceLink,
   priceLink,
 }) => {
   if (!isPushed) {
@@ -75,18 +77,28 @@ const PanelFooter: React.FC<Props> = ({
     );
   }
 
+  const theme = useTheme()
+  
   return (
     <Container>
       <SettingsEntry>
         {cakePriceUsd ? (
           <PriceLink href={priceLink} target="_blank">
             <PancakeRoundIcon width="24px" mr="8px" />
-            <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
+            <Text color={theme.nav.textColor} bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
           </PriceLink>
         ) : (
           <Skeleton width={80} height={24} />
         )}
-        <Dropdown
+        {friendPriceUsd ? (
+          <PriceLink href={friendPriceLink} target="_blank">
+            <FriendTokenIcon width="24px" mr="8px" />
+            <Text color={theme.nav.textColor} bold>{`$${friendPriceUsd.toFixed(3)}`}</Text>
+          </PriceLink>
+        ) : (
+          <Skeleton width={80} height={24} />
+        )}
+        {/* <Dropdown
           position="top-right"
           target={
             <Button variant="text" startIcon={<LanguageIcon color="textSubtle" width="24px" />}>
@@ -105,7 +117,7 @@ const PanelFooter: React.FC<Props> = ({
               {lang.language}
             </MenuButton>
           ))}
-        </Dropdown>
+        </Dropdown> */}
       </SettingsEntry>
       <SocialEntry>
         {socials.map((social, index) => {

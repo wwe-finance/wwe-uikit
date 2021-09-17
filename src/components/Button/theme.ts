@@ -99,6 +99,7 @@ export const dark: ButtonTheme = {
   },
   [SUBTLE]: {
     ...light.subtle,
+    background: darkColors.borderColor,
   },
   [SUCCESS]: {
     ...light.success,
