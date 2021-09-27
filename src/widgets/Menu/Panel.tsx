@@ -5,6 +5,7 @@ import PanelFooter from "./PanelFooter";
 import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import { PanelProps, PushedProps } from "./types";
 import RugDocAuditButton from "./RugDocAuditButton";
+import RugDocLockButton from "./RugDocLockButton";
 import JagoSaferAuditButton from "./JagoSaferAuditButton";
 
 interface Props extends PanelProps, PushedProps {
@@ -44,6 +45,7 @@ const Panel: React.FC<Props> = (props) => {
     <StyledPanel isPushed={isPushed} showMenu={showMenu}>
       <PanelBody {...props} />
       {rugDocLink && <RugDocAuditButton auditLink={rugDocLink} />}
+      {rugDocLink && <RugDocLockButton auditLink={rugDocLink} />}
       {jagoSaferLink && <JagoSaferAuditButton auditLink={jagoSaferLink} />}
       <PanelFooter {...props} />
     </StyledPanel>
